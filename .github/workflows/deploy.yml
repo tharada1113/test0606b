@@ -28,5 +28,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to Azure
-        run: echo $AZURE_WEBAPP_NAME Deploy
+      - name: Deploy to Azure Dev Environment
+        run: echo $AZURE_WEBAPP_NAME Deploy to Azure Dev Environment
