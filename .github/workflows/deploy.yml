@@ -1,0 +1,32 @@
+name: AzureWebAppsDeployment-dev
+
+env:
+  AZURE_WEBAPP_NAME: TestWebApp   # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '6.x'                 # set this to the .NET Core version to use
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: CheckOut
+        uses: actions/checkout@v3
+
+      - name: Build with dotnet
+        run: echo $AZURE_WEBAPP_NAME Build
+
+  deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to Azure
+        run: echo $AZURE_WEBAPP_NAME Deploy
